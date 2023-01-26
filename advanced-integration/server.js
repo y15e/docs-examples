@@ -38,4 +38,14 @@ app.post("/api/orders/:orderID/capture", async (req, res) => {
   }
 });
 
+app.post("/api/orders/:orderID/authorize", async (req, res) => {
+  const { orderID } = req.params;
+  try {
+    const authorizeData = await paypal.authorizePayment(orderID);
+    res.json(authorizeData);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 app.listen(process.env.PORT);
