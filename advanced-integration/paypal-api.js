@@ -16,7 +16,7 @@ export async function createOrder() {
       Authorization: `Bearer ${accessToken}`,
     },
     body: JSON.stringify({
-      intent: "CAPTURE",
+      intent: "AUTHORIZE",
       purchase_units: [
         {
           amount: {
