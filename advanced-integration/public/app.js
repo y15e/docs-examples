@@ -12,22 +12,19 @@ paypal
     },
     // Finalize the transaction after payer approval
     onApprove: function (data, actions) {
-      return fetch(`/api/orders/${data.orderID}/capture`, {
+      return fetch(`/api/orders/${data.orderID}/authorize`, {
         method: "post",
       })
         .then((response) => response.json())
         .then((orderData) => {
           // Successful capture! For dev/demo purposes:
           console.log(
-            "Capture result",
+            "Authorize result",
             orderData,
             JSON.stringify(orderData, null, 2)
           );
           const transaction = orderData.purchase_units[0].payments.captures[0];
-          alert(`Transaction ${transaction.status}: ${transaction.id}
-
-            See console for all available details
-          `);
+          alert(`Transaction ${transaction.status}: ${transaction.id}`);
           // When ready to go live, remove the alert and show a success message within this page. For example:
           // var element = document.getElementById('paypal-button-container');
           // element.innerHTML = '<h3>Thank you for your payment!</h3>';
