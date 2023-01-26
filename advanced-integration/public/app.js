@@ -23,7 +23,7 @@ paypal
             orderData,
             JSON.stringify(orderData, null, 2)
           );
-          const transaction = orderData.purchase_units[0].payments.captures[0];
+          const transaction = orderData.purchase_units[0].payments.authorizations[0];
           alert(`Transaction ${transaction.status}: ${transaction.id}`);
           // When ready to go live, remove the alert and show a success message within this page. For example:
           // var element = document.getElementById('paypal-button-container');
@@ -49,7 +49,7 @@ if (paypal.HostedFields.isEligible()) {
       })
         .then((res) => res.json())
         .then((orderData) => {
-          orderId = orderData.id; // needed later to complete capture
+          orderId = orderData.id;
           return orderData.id;
         });
     },
@@ -107,7 +107,7 @@ if (paypal.HostedFields.isEligible()) {
           },
         })
         .then(() => {
-          fetch(`/api/orders/${orderId}/capture`, {
+          fetch(`/api/orders/${orderId}/authorize`, {
             method: "post",
           })
             .then((res) => res.json())
@@ -131,7 +131,7 @@ if (paypal.HostedFields.isEligible()) {
             });
         })
         .catch((err) => {
-          alert("Payment could not be captured! " + JSON.stringify(err));
+          alert("Payment could not be authorized! " + JSON.stringify(err));
         });
     });
   });
