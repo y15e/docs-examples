@@ -17,8 +17,8 @@ export async function createOrder() {
       purchase_units: [
         {
           amount: {
-            currency_code: "USD",
-            value: "300.00",
+            currency_code: "JPY",
+            value: "10",
           },
         },
       ],
