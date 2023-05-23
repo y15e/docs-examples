@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
-const { CLIENT_ID, APP_SECRET } = process.env;
-const base = "https://api-m.sandbox.paypal.com";
+const { API_HOST, CLIENT_ID, APP_SECRET } = process.env;
+const base = API_HOST;
 
 export async function createOrder() {
   const accessToken = await generateAccessToken();
