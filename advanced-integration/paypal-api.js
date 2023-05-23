@@ -6,7 +6,7 @@ const base = `https://${API_HOST}`;
 
 // call the create order method
 export async function createOrder() {
-  const purchaseAmount = "10"; // TODO: pull prices from a database
+  const purchaseAmount = "300"; // TODO: pull prices from a database
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
   const response = await fetch(url, {

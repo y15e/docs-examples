@@ -18,7 +18,7 @@ export async function createOrder() {
         {
           amount: {
             currency_code: "USD",
-            value: "100.00",
+            value: "300.00",
           },
         },
       ],
