@@ -105,6 +105,7 @@ if (paypal.HostedFields.isEligible()) {
               "card-billing-address-country"
             ).value,
           },
+          contingencies: ['SCA_ALWAYS']
         })
         .then(() => {
           fetch(`/api/orders/${orderId}/authorize`, {
