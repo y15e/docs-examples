@@ -4,9 +4,9 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
+        "build": "GENERATE_SOURCEMAP=false vite build",
         "preview": "vite preview",
-        "start": "vite",
+        "start": "GENERATE_SOURCEMAP=false vite",
         "format": "npx prettier --write **/*.{js,md}",
         "format:check": "npx prettier --check **/*.{js,md}"
     },
