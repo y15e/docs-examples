@@ -147,6 +147,15 @@ async function createOrderCallback() {
                 "card-billing-address-postal-code",
               ).value,
             },
+            payment_source: {
+              card: {
+                attributes: {
+                  verification: {
+                    method: "SCA_ALWAYS",
+                  },
+                },
+              }
+            }
           })
           .catch((error) => {
             resultMessage(
