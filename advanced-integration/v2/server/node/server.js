@@ -51,12 +51,17 @@ const createOrder = async (cart) => {
           },
         },
       ],
-      payment_source: {
+      paymentSource: {
         card: {
           attributes: {
             verification: {
               method: "SCA_ALWAYS",
             },
+          },
+          experience_context: {
+            shipping_preference: "NO_SHIPPING",
+            return_url: "https://example.com/returnUrl",
+            cancel_url: "https://example.com/cancelUrl",
           },
         }
       }
