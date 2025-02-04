@@ -42,12 +42,12 @@ const ordersController = new OrdersController(client);
 const createOrder = async (cart) => {
   const collect = {
     body: {
-      intent: CheckoutPaymentIntent.Capture,
+      intent: CheckoutPaymentIntent.Authorize,
       purchaseUnits: [
         {
           amount: {
             currencyCode: "USD",
-            value: "100.00",
+            value: "1.00",
           },
         },
       ],
