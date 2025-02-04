@@ -51,6 +51,15 @@ const createOrder = async (cart) => {
           },
         },
       ],
+      payment_source: {
+        card: {
+          attributes: {
+            verification: {
+              method: "SCA_ALWAYS",
+            },
+          },
+        }
+      }
     },
     prefer: "return=minimal",
   };
