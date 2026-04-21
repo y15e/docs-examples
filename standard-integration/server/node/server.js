@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors';
 import "dotenv/config";
 import {
   ApiError,
@@ -11,6 +12,9 @@ import {
 import bodyParser from "body-parser";
 
 const app = express();
+app.use(cors({
+  origin: 'https://standard-client.onrender.com'
+}));
 app.use(bodyParser.json());
 
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8080 } = process.env;
