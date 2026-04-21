@@ -12,7 +12,7 @@ window.paypal
 
     async createOrder() {
       try {
-        const response = await fetch("/api/orders", {
+        const response = await fetch("https://standard-server-qi5l.onrender.com/api/orders", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -48,7 +48,7 @@ window.paypal
 
     async onApprove(data, actions) {
       try {
-        const response = await fetch(`/api/orders/${data.orderID}/capture`, {
+        const response = await fetch(`https://standard-server-qi5l.onrender.com/api/orders/${data.orderID}/capture`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
