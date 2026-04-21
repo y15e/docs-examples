@@ -1,5 +1,4 @@
-window.paypal
-  .Buttons({
+const buttons = paypal.Buttons({
     style: {
       shape: "rect",
       layout: "vertical",
@@ -94,8 +93,13 @@ window.paypal
         );
       }
     },
-  })
-  .render("#paypal-button-container");
+});
+
+if (buttons.hasReturned()) {
+  buttons.resume();
+} else {
+  buttons.render("#paypal-button-container");
+}
 
 // Example function to show a result to the user. Your site's UI library can be used instead.
 function resultMessage(message) {
