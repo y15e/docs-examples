@@ -16,5 +16,8 @@ export default defineConfig({
         secure: false,
       },
     },
+    allowedHosts: [
+      'standard-client.onrender.com'
+    ]
   },
 })
