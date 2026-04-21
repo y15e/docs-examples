@@ -16,7 +16,15 @@ window.paypal
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-          }
+          },
+          body: JSON.stringify({
+            cart: [
+              {
+                id: "YOUR_PRODUCT_ID",
+                quantity: "1",
+              },
+            ],
+          }),
         });
 
         const orderData = await response.json();
