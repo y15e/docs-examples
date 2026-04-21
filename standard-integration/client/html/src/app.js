@@ -9,7 +9,7 @@ window.paypal
     message: {
       amount: 100,
     },
-
+    appSwitchWhenAvailable: true,
     async createOrder() {
       try {
         const response = await fetch("https://standard-server-qi5l.onrender.com/api/orders", {
