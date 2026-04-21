@@ -53,7 +53,10 @@ const createOrder = async (cart) => {
         "experience_context": {
           "user_action": "PAY_NOW",
           "return_url": "https://standard-client.onrender.com/",
-          "cancel_url": "https://standard-client.onrender.com/"
+          "cancel_url": "https://standard-client.onrender.com/",
+          "app_switch_preference": {
+            "launch_paypal_app": true
+          }
         }
     }
   },
