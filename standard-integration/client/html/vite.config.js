@@ -7,6 +7,7 @@ export default defineConfig({
   envPrefix: "PAYPAL",
   root: "src",
   server: {
+    host: true,
     port: process.env.PORT || 3000,
     proxy: {
       "/api": {
