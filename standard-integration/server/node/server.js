@@ -47,15 +47,15 @@ const createOrder = async (cart) => {
   const collect = {
     body: {
       intent: CheckoutPaymentIntent.Capture,
-      payment_source: {
+      paymentSource: {
         "paypal": {
           "email_address": "ywatanabe+buyer@paypal.com",                            
-          "experience_context": {
-            "user_action": "PAY_NOW",
-            "return_url": "https://standard-client.onrender.com/",
-            "cancel_url": "https://standard-client.onrender.com/",
-            "app_switch_preference": {
-              "launch_paypal_app": true
+          "experienceContext": {
+            "userAction": "PAY_NOW",
+            "returnUrl": "https://standard-client.onrender.com/",
+            "cancelUrl": "https://standard-client.onrender.com/",
+            "appSwitchPreference": {
+              "launchPaypalApp": true
             }
           }
         }
