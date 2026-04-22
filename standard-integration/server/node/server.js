@@ -49,7 +49,7 @@ const createOrder = async (cart) => {
       intent: CheckoutPaymentIntent.Capture,
       paymentSource: {
         "paypal": {
-          "email_address": "ywatanabe+buyer@paypal.com",                            
+          "emailAddress": "ywatanabe+buyer@paypal.com",                            
           "experienceContext": {
             "userAction": "PAY_NOW",
             "returnUrl": "https://standard-client.onrender.com/",
