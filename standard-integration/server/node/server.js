@@ -82,6 +82,7 @@ const createOrder = async (cart) => {
       httpStatusCode: httpResponse.statusCode,
     };
   } catch (error) {
+    console.dir(error)
     if (error instanceof ApiError) {
       // const { statusCode, headers } = error;
       throw new Error(error.message);
