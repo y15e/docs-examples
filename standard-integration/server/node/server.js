@@ -60,7 +60,7 @@ const createOrder = async (cart) => {
           }
         }
       },
-      purchase_units: [
+      purchaseUnits: [
         {
           amount: {
             currencyCode: "USD",
