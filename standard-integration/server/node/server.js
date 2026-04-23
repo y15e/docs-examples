@@ -19,6 +19,37 @@ app.use(bodyParser.json());
 
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8080 } = process.env;
 
+const order = {
+  "intent": "AUTHORIZE",
+  "purchase_units": [
+    {
+      "amount": {
+        "currency_code": "JPY",
+        "value": "10"
+      }
+    }
+  ],
+  "payment_source": {
+    "paypal": {
+      "email_address": "ywatanabe+usbuyer@paypal.com",
+      "experience_context": {
+        "user_action": "PAY_NOW",
+        "return_url": "https://gse-appstestbed.com/braintree-payments",
+        "cancel_url": "https://gse-appstestbed.com/braintree-payments",
+        "payment_method_selected": "PAYPAL",
+        "app_switch_context": {
+          "native_app": {
+            "return_app_url": "https://gse-appstestbed.com/braintree-payments",
+            "cancel_app_url": "https://gse-appstestbed.com/braintree-payments",
+            "os_type": "ANDROID",
+            "os_version": "35"
+          }
+        }
+      }
+    }
+  }
+}
+
 const client = new Client({
   clientCredentialsAuthCredentials: {
     oAuthClientId: PAYPAL_CLIENT_ID,
@@ -79,13 +110,25 @@ const createOrder = async (cart) => {
   };
 
   try {
+
+    const token = await client.clientCredentialsAuthManager.fetchToken();
+    const res = await fetch('https://api-m.sandbox.paypal.com/v2/checkout/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token.accessToken}`
+      },
+      body: JSON.stringify(order)
+    })
+    const json = await res.json()    
+    
     const { body, ...httpResponse } = await ordersController.ordersCreate(
       collect
     );
     // Get more response info...
     // const { statusCode, headers } = httpResponse;
     return {
-      jsonResponse: JSON.parse(body),
+      jsonResponse: json, //JSON.parse(body),
       httpStatusCode: httpResponse.statusCode,
     };
   } catch (error) {
