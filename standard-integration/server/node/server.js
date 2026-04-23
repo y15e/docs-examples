@@ -54,9 +54,16 @@ const createOrder = async (cart) => {
             "userAction": "PAY_NOW",
             "returnUrl": "https://standard-client.onrender.com/",
             "cancelUrl": "https://standard-client.onrender.com/",
-            "appSwitchPreference": {
-              "launchPaypalApp": true
-            }
+            "paymentMethodSelected": "PAYPAL",
+            "appSwitchContext": {
+    "nativeApp": {
+        "returnAppUrl": "https://gse-appstestbed.com/braintree-payments",
+        "cancelAppUrl": "https://gse-appstestbed.com/braintree-payments",
+        "osType": "ANDROID",
+        "osVersion": "35"
+    }
+}
+
           }
         }
       },
