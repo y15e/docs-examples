@@ -34,13 +34,13 @@ const order = {
       "email_address": "ywatanabe+usbuyer@paypal.com",
       "experience_context": {
         "user_action": "PAY_NOW",
-        "return_url": "https://gse-appstestbed.com/braintree-payments",
-        "cancel_url": "https://gse-appstestbed.com/braintree-payments",
+        "return_url": "https://standard-client.onrender.com/",
+        "cancel_url": "https://standard-client.onrender.com/",
         "payment_method_selected": "PAYPAL",
         "app_switch_context": {
           "native_app": {
-            "return_app_url": "https://gse-appstestbed.com/braintree-payments",
-            "cancel_app_url": "https://gse-appstestbed.com/braintree-payments",
+            //"return_app_url": "https://gse-appstestbed.com/braintree-payments",
+            //"cancel_app_url": "https://gse-appstestbed.com/braintree-payments",
             "os_type": "ANDROID",
             "os_version": "35"
           }
