@@ -25,7 +25,7 @@ const order = {
     {
       "amount": {
         "currency_code": "USD",
-        "value": "10.12"
+        "value": "10.13"
       }
     }
   ],
@@ -36,15 +36,7 @@ const order = {
         "user_action": "PAY_NOW",
         "return_url": "https://standard-client.onrender.com/",
         "cancel_url": "https://standard-client.onrender.com/",
-        "payment_method_selected": "PAYPAL",
-        //"app_switch_context": {
-          //"native_app": {
-            //"return_app_url": "https://gse-appstestbed.com/braintree-payments",
-            //"cancel_app_url": "https://gse-appstestbed.com/braintree-payments",
-            //"os_type": "ANDROID",
-            //"os_version": "35"
-          //}
-        //}
+        //"payment_method_selected": "PAYPAL"
       }
     }
   }
