@@ -25,13 +25,13 @@ const order = {
     {
       "amount": {
         "currency_code": "USD",
-        "value": "10"
+        "value": "10.11"
       }
     }
   ],
   "payment_source": {
     "paypal": {
-      "email_address": "ywatanabe+usbuyer@paypal.com",
+      //"email_address": "ywatanabe+usbuyer@paypal.com",
       "experience_context": {
         "user_action": "PAY_NOW",
         "return_url": "https://standard-client.onrender.com/",
@@ -42,7 +42,7 @@ const order = {
             //"return_app_url": "https://gse-appstestbed.com/braintree-payments",
             //"cancel_app_url": "https://gse-appstestbed.com/braintree-payments",
             "os_type": "ANDROID",
-            "os_version": "35"
+            //"os_version": "35"
           }
         }
       }
