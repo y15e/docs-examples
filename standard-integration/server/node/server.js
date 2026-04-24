@@ -24,8 +24,8 @@ const order = {
   "purchase_units": [
     {
       "amount": {
-        "currency_code": "USD",
-        "value": "10.15"
+        "currency_code": "JPY",
+        "value": "30"
       }
     }
   ],
