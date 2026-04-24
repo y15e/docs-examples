@@ -20,23 +20,21 @@ app.use(bodyParser.json());
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8080 } = process.env;
 
 const order = {
-  "intent": "CAPTURE",
+  "intent": "AUTHORIZE",
   "purchase_units": [
     {
       "amount": {
         "currency_code": "USD",
-        "value": "10.13"
+        "value": "10.15"
       }
     }
   ],
   "payment_source": {
     "paypal": {
-      //"email_address": "ywatanabe+usbuyer@paypal.com",
       "experience_context": {
         "user_action": "PAY_NOW",
         "return_url": "https://standard-client.onrender.com/",
         "cancel_url": "https://standard-client.onrender.com/",
-        //"payment_method_selected": "PAYPAL"
       }
     }
   }
