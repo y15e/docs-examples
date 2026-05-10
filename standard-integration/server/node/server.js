@@ -33,7 +33,9 @@ const order = {
     "paypal": {
       "email_address": "ywatanabe+buyer@paypal.com",
       "experience_context": {
-        "user_action": "PAY_NOW"
+        "user_action": "PAY_NOW",
+        "return_url": "https://standard-client.onrender.com/",
+        "cancel_url": "https://standard-client.onrender.com/"
       }
     }
   }
