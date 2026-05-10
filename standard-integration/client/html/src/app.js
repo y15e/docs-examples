@@ -9,6 +9,7 @@ const buttons = paypal.Buttons({
       amount: 100,
     },
     appSwitchWhenAvailable: true,
+    browserContext: 'browser',
     async createOrder() {
       try {
         const response = await fetch("https://standard-server-qi5l.onrender.com/api/orders", {
@@ -95,11 +96,7 @@ const buttons = paypal.Buttons({
     },
 });
 
-if (buttons.hasReturned()) {
-  buttons.resume();
-} else {
-  buttons.render("#paypal-button-container");
-}
+buttons.render("#paypal-button-container");
 
 // Example function to show a result to the user. Your site's UI library can be used instead.
 function resultMessage(message) {
