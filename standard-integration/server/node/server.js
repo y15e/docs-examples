@@ -17,7 +17,7 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 
-const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8080 } = process.env;
+const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8080, ENV } = process.env;
 
 const order = {
   "intent": "AUTHORIZE",
@@ -47,7 +47,7 @@ const client = new Client({
     oAuthClientSecret: PAYPAL_CLIENT_SECRET,
   },
   timeout: 0,
-  environment: Environment.Sandbox,
+  environment: ENV === 'production' ? Environment.Production : Environment.Sandbox,
   logging: {
     logLevel: LogLevel.Info,
     logRequest: {
@@ -103,7 +103,8 @@ const createOrder = async (cart) => {
   try {
 
     const token = await client.clientCredentialsAuthManager.fetchToken();
-    const res = await fetch('https://api-m.sandbox.paypal.com/v2/checkout/orders', {
+    const apiHost = ENV === 'production' ? 'api-m.paypal.com' : 'api-m.sandbox.paypal.com'
+    const res = await fetch(`https://${apiHost}/v2/checkout/orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
