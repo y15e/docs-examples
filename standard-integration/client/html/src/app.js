@@ -8,7 +8,8 @@ const buttons = paypal.Buttons({
     message: {
       amount: 100,
     },
-    appSwitchWhenAvailable: document.getElementById('appSwitchWhenAvailable').checked,
+    appSwitchWhenAvailable: true,
+    //appSwitchWhenAvailable: document.getElementById('appSwitchWhenAvailable').checked,
     //browserContext: 'browser',
     async createOrder() {
       try {
