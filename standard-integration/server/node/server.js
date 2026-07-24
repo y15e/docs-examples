@@ -20,12 +20,12 @@ app.use(bodyParser.json());
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8080, ENV } = process.env;
 
 const order = {
-  "intent": "AUTHORIZE",
+  "intent": "CAPTURE",
   "purchase_units": [
     {
       "amount": {
         "currency_code": "USD",
-        "value": "3.45"
+        "value": "1.23"
       }
     }
   ],
