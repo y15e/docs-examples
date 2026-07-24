@@ -31,9 +31,7 @@ const order = {
   ],
   "payment_source": {
     "paypal": {
-      "email_address": "ywatanabe+buyer@paypal.com",
       "experience_context": {
-        "user_action": "PAY_NOW",
         "return_url": "https://standard-client.onrender.com/",
         "cancel_url": "https://standard-client.onrender.com/"
       }
@@ -66,42 +64,8 @@ const ordersController = new OrdersController(client);
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
 const createOrder = async (cart) => {
-  const collect = {
-    body: {
-      intent: CheckoutPaymentIntent.Capture,
-      paymentSource: {
-        "paypal": {
-          "emailAddress": "ywatanabe+buyer@paypal.com",                            
-          "experienceContext": {
-            "userAction": "PAY_NOW",
-            "returnUrl": "https://standard-client.onrender.com/",
-            "cancelUrl": "https://standard-client.onrender.com/",
-            "paymentMethodSelected": "PAYPAL",
-            "appSwitchContext": {
-    "nativeApp": {
-        "returnAppUrl": "https://gse-appstestbed.com/braintree-payments",
-        "cancelAppUrl": "https://gse-appstestbed.com/braintree-payments",
-        "osType": "ANDROID",
-        "osVersion": "35"
-    }
-}
-
-          }
-        }
-      },
-      purchaseUnits: [
-        {
-          amount: {
-            currencyCode: "USD",
-            value: "10.00",
-          },
-        },
-      ],
-    }
-  };
-
+  
   try {
-
     const token = await client.clientCredentialsAuthManager.fetchToken();
     const apiHost = ENV === 'production' ? 'api-m.paypal.com' : 'api-m.sandbox.paypal.com'
     const res = await fetch(`https://${apiHost}/v2/checkout/orders`, {
@@ -114,14 +78,9 @@ const createOrder = async (cart) => {
     })
     const json = await res.json()    
     
-    const { body, ...httpResponse } = await ordersController.ordersCreate(
-      collect
-    );
-    // Get more response info...
-    // const { statusCode, headers } = httpResponse;
     return {
-      jsonResponse: json, //JSON.parse(body),
-      httpStatusCode: httpResponse.statusCode,
+      jsonResponse: json,
+      httpStatusCode: res.status
     };
   } catch (error) {
     console.dir(error)
