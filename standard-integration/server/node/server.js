@@ -33,7 +33,13 @@ const order = {
     "paypal": {
       "experience_context": {
         "return_url": "https://standard-client.onrender.com/",
-        "cancel_url": "https://standard-client.onrender.com/"
+        "cancel_url": "https://standard-client.onrender.com/",
+        "app_switch_context": {
+                    "mobile_web": {
+                        "return_flow": "AUTO",
+                        "buyer_user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Mobile/15E148 Safari/604.1"
+                    }
+                }
       }
     }
   }
