@@ -33,7 +33,13 @@ const order = {
     "paypal": {
       "experience_context": {
         "return_url": "https://standard-client.onrender.com/",
-        "cancel_url": "https://standard-client.onrender.com/"
+        "cancel_url": "https://standard-client.onrender.com/",
+        "app_switch_context": {
+          "mobile_web": {
+            "return_flow": "AUTO",
+            "buyer_user_agent": ""
+          }
+        }
       }
     }
   }
@@ -63,8 +69,10 @@ const ordersController = new OrdersController(client);
  * Create an order to start the transaction.
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
-const createOrder = async (cart) => {
+const createOrder = async (cart, req) => {
   
+  order.payment_source.paypal.experience_context.app_switch_context.mobile_web.buyer_user_agent = req.headers['user-agent']
+    
   try {
     const token = await client.clientCredentialsAuthManager.fetchToken();
     const apiHost = ENV === 'production' ? 'api-m.paypal.com' : 'api-m.sandbox.paypal.com'
@@ -123,7 +131,7 @@ app.post("/api/orders", async (req, res) => {
   try {
     // use the cart information passed from the front-end to calculate the order amount detals
     const { cart } = req.body;
-    const { jsonResponse, httpStatusCode } = await createOrder(cart);
+    const { jsonResponse, httpStatusCode } = await createOrder(cart, req);
     res.status(httpStatusCode).json(jsonResponse);
   } catch (error) {
     console.error("Failed to create order:", error);
