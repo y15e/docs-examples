@@ -32,6 +32,9 @@ const order = {
   "payment_source": {
     "paypal": {
       "experience_context": {
+        "landing_page": "LOGIN",
+        "payment_method_preference": "IMMEDIATE_PAYMENT_REQUIRED",
+        "user_action": "PAY_NOW",
         "return_url": "https://standard-client.onrender.com/",
         "cancel_url": "https://standard-client.onrender.com/",
         "app_switch_context": {
