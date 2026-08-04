@@ -42,6 +42,9 @@ const order = {
             "return_flow": "AUTO",
             "buyer_user_agent": ""
           }
+        },
+        "app_switch_preference": {
+          "launch_paypal_app": true
         }
       }
     }
