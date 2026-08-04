@@ -9,7 +9,7 @@ const buttons = paypal.Buttons({
       amount: 100,
     },
     appSwitchWhenAvailable: true,
-    fundingSource: 'paypal',
+    //fundingSource: 'paypal',
     async createOrder() {
       try {
         const response = await fetch("https://standard-server-qi5l.onrender.com/api/orders", {
